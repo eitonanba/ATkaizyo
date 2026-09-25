@@ -1,0 +1,722 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="app-version" content="1.0.1">
+<meta name="theme-color" content="#153d36">
+<meta name="description" content="神奈川県の普通自動車AT限定解除向けコース暗記ツール。1号・2号の模式図に走行ラインを描き、参考ルートとの比較・再生ができます。非公式の学習用ツールです。">
+<title>神奈川県 普通車AT限定解除 | コース暗記ツール</title>
+<style>:root{--ink:#233a33;--muted:#6a7b72;--green:#0a7862;--green-dark:#153d36;--green-soft:#e7f3ed;--border:#dce5df;--paper:#fff;--bg:#f2f5f2;--blue:#2563eb;--red:#d45635;--shadow:0 4px 22px #173b2910;--radius:18px;color-scheme:light}*{box-sizing:border-box}body{margin:0;color:var(--ink);background:var(--bg);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans CJK JP","Yu Gothic",Meiryo,sans-serif;font-size:14px;line-height:1.6}button,input,select,textarea{font:inherit}button,a,select,input{ -webkit-tap-highlight-color:transparent}button{cursor:pointer;white-space:nowrap}button:disabled{opacity:.42;cursor:not-allowed}button,a,input,select,textarea,summary{outline-offset:4px}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible,#courseMap:focus-visible{outline:3px solid #2b9a80}button{touch-action:manipulation}button svg,a svg{flex:none}button:hover:not(:disabled){filter:brightness(.98)}button:active:not(:disabled){transform:translateY(1px)}a{color:var(--green)}button,select{min-height:40px}h1,h2,h3,p{margin:0}.icon{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;vertical-align:middle;flex-shrink:0}.svg-symbols{position:absolute;width:0;height:0;overflow:hidden}.topbar{background:var(--green-dark);color:#fff}.topbar-inner{max-width:1480px;margin:auto;padding:24px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{display:flex;align-items:center;gap:14px}.brand-mark{width:49px;height:49px;border:1px solid #ffffff45;border-radius:15px;background:#ffffff0c;display:grid;place-items:center;flex:none}.brand-mark .icon{width:28px;height:28px;stroke-width:1.45}.eyebrow{font-size:11px;font-weight:600;letter-spacing:.11em}.header-eyebrow{color:#b3d5c6;margin-bottom:4px}h1{font-size:24px;font-weight:690;letter-spacing:.01em;line-height:1.4}h1 span{font-size:15px;font-weight:500;display:inline-block;margin-left:13px;color:#cae0d6}.header-actions{display:flex;align-items:center;gap:13px}.unofficial{font-size:11px;color:#c4d8ce;padding:4px 9px;border:1px solid #ffffff2b;border-radius:5px;white-space:nowrap}.header-help{background:none;border:0;color:#e4ece7;font-size:12px;padding:8px 3px}.official-link{display:flex;align-items:center;gap:8px;color:#fff;text-decoration:none;border:1px solid #ffffff42;border-radius:9px;padding:9px 12px;font-size:12px;white-space:nowrap}.official-link:hover{background:#ffffff10}main{max-width:1480px;margin:auto;padding:26px 32px 32px}.course-toolbar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:24px}.course-chooser{display:flex;align-items:center;gap:20px}.section-label{font-size:12px;font-weight:650;color:#63746a}.course-switch{display:flex;background:#e4ebe5;border-radius:12px;padding:4px;gap:4px}.course-button{padding:9px 20px;display:flex;align-items:center;gap:10px;border:0;background:none;border-radius:9px;font-size:14px;font-weight:650;color:#6b7b72;min-height:44px;transition:background .14s,box-shadow .14s}.course-button.active{background:#fff;color:var(--green-dark);box-shadow:0 2px 7px #14372413}.course-index{font-size:12px;font-variant-numeric:tabular-nums;color:#7d9185}.course-button.active .course-index{color:var(--green)}.storage-status{display:flex;align-items:center;gap:7px;font-size:11px;color:var(--muted)}.status-dot{width:6px;height:6px;display:block;border-radius:50%;background:#70a88f;flex:none}.status-dot.warning{background:#c18a33}.app-layout{display:grid;grid-template-columns:minmax(0,1fr) 324px;align-items:start;gap:22px}.map-card,.control-card,.memo-card{border:1px solid var(--border);background:var(--paper);box-shadow:var(--shadow);border-radius:var(--radius);overflow:hidden}.map-card{min-width:0}.map-heading{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:20px 23px 16px}.map-title-group{display:flex;align-items:center;gap:12px}.map-number{width:42px;height:42px;display:grid;place-items:center;background:var(--green-soft);border-radius:12px;font-weight:700;font-size:18px;letter-spacing:-.02em;color:var(--green)}.map-heading h2{font-size:20px;line-height:1.4;font-weight:700}.map-heading p{font-size:11px;margin-top:2px;color:var(--muted)}.mode-badge{font-size:11px;border:1px solid #d6e7dc;background:#f1f8f4;border-radius:20px;color:var(--green);padding:4px 10px;white-space:nowrap}.map-notice{margin:0 20px 11px;border:1px solid #eee6d5;background:#fbf8f0;border-radius:7px;padding:7px 10px;display:flex;align-items:flex-start;gap:7px;color:#84724b;font-size:10.5px;line-height:1.65}.map-notice .icon{width:14px;height:14px;margin-top:2px;stroke-width:1.7}.map-notice strong{font-weight:650}.canvas-toolbar{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:0 20px 12px}.tool-switch{display:flex;background:#f0f4f1;border:1px solid #e5ece6;border-radius:9px;padding:3px;gap:2px}.tool-button{display:flex;align-items:center;gap:6px;padding:5px 11px;min-height:32px;border:0;background:transparent;border-radius:6px;color:#6a7b72;font-size:12px}.tool-button .icon{width:15px;height:15px}.tool-button.active{background:#fff;color:var(--green);box-shadow:0 1px 4px #193e2815}.zoom-tools{display:flex;align-items:center;gap:1px}.icon-button{display:inline-flex;align-items:center;justify-content:center;border:0;background:none;border-radius:7px;min-width:35px;min-height:35px;color:#697c71}.zoom-button{font-size:20px;font-weight:400}.zoom-value{background:none;border:0;min-width:50px;min-height:35px;color:#5c7165;font-size:11px;font-variant-numeric:tabular-nums}.tool-divider{height:17px;width:1px;background:var(--border);margin:0 6px}.map-stage{margin:0 14px;aspect-ratio:1100/780;background:#edf2ef;border:1px solid #dde6df;border-radius:10px;overflow:hidden;position:relative}#courseMap{display:block;width:100%;height:100%;touch-action:none;user-select:none;-webkit-user-select:none;cursor:crosshair}#courseMap.pan-mode{cursor:grab}#courseMap.dragging{cursor:grabbing}.road-number text,.small-number text,.task-number text,.bay-number text{text-anchor:middle;dominant-baseline:middle;stroke:none;font-family:system-ui,sans-serif}.road-number text{font-size:14px;fill:#775f44}.small-number text{font-size:11px;fill:#607367}.task-number text{font-size:11px;fill:#6273ae}.bay-number text{font-size:8px;fill:#607367}#referenceLayer,#userLines,#draftLine,#startPin,.replay-car{pointer-events:none}.reference-line,.user-line{fill:none;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}.reference-line{stroke:var(--red);stroke-width:3.3px}.user-line{stroke:var(--blue);stroke-width:3.5px;stroke-opacity:.83}#draftLine{stroke-opacity:1}#directionArrows path{fill:none;stroke:var(--red);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}.map-caption{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 20px;color:#78877d;font-size:10.5px}.legend{display:flex;align-items:center;gap:15px}.legend span{display:flex;align-items:center;gap:6px}.legend-line{display:inline-block;width:17px;height:3px;border-radius:3px;vertical-align:middle;flex-shrink:0}.legend-line.mine{background:var(--blue)}.legend-line.reference{background:var(--red)}.player{border-top:1px solid var(--border);padding:16px 20px 14px;background:#fafcf9}.player-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}.player-source,.speed-control{display:flex;align-items:center;gap:9px}.player-source label,.speed-control label{font-size:11px;color:#708073}select{appearance:auto;background:#fff;border:1px solid #dce5dd;color:#40574a;border-radius:7px;padding:5px 27px 5px 9px;min-height:32px;font-size:12px;max-width:100%}.player-main{display:flex;align-items:center;gap:11px}.play-button{background:var(--green-dark);border:0;color:#fff;display:flex;align-items:center;justify-content:center;gap:6px;border-radius:9px;min-height:40px;min-width:94px;font-size:12px;padding:8px 10px}.play-button .icon{width:16px;height:16px;stroke-width:1.6}.rewind{background:#eef3ed;min-width:34px}.rewind .icon{width:16px;height:16px}input[type=range]{appearance:none;-webkit-appearance:none;height:5px;min-width:0;border-radius:5px;background:#dbe6dc;cursor:pointer;accent-color:var(--green)}input[type=range]::-webkit-slider-thumb{appearance:none;-webkit-appearance:none;width:15px;height:15px;background:var(--green);border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px #16715c}input[type=range]::-moz-range-thumb{width:12px;height:12px;background:var(--green);border-radius:50%;border:2px solid #fff}#playProgress{flex:1;margin:0 3px}#progressText{font-size:11px;min-width:34px;text-align:right;font-variant-numeric:tabular-nums;color:#607466}.player-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:10px;font-size:10px;color:#7a887c;line-height:1.7}.playback-note{font-size:9.5px}.sidebar{display:flex;flex-direction:column;gap:16px;min-width:0}.control-card{padding:8px}.mode-tabs{display:grid;grid-template-columns:1fr 1.2fr 1.2fr;gap:3px;padding:3px;background:#eff3ef;border-radius:10px}.mode-tab{border:0;border-radius:7px;background:none;color:#748277;font-size:12px;font-weight:600;min-height:38px;padding:6px 3px}.mode-tab.active{background:#fff;box-shadow:0 1px 5px #14372412;color:var(--green)}.mode-panel{padding:22px 14px 14px}.panel-kicker{font-size:11px;font-weight:600;color:var(--green);margin-bottom:6px;letter-spacing:.015em}.mode-panel h2{font-size:19px;line-height:1.5;margin-bottom:8px;font-weight:700}.panel-description{font-size:12px;color:#6c7d71;line-height:1.85;margin-bottom:19px}.button-pair{display:grid;grid-template-columns:1fr 1fr;gap:8px}.secondary-button,.primary-button{display:flex;align-items:center;justify-content:center;gap:7px;min-height:41px;padding:9px 12px;border:1px solid var(--border);border-radius:9px;font-size:12px;font-weight:600}.secondary-button{color:#5d7263;background:#fff}.secondary-button .icon{width:16px;height:16px}.primary-button{background:var(--green);color:#fff;border-color:var(--green);min-height:44px}.primary-button .icon{width:17px;height:17px}.full-width{width:100%}.primary-button.full-width+.secondary-button.full-width{margin-top:9px}.hint-box{margin:23px 0 22px;padding:15px 13px 12px;background:#f7f9f5;border:1px solid #e7ece1;border-radius:10px}.field-heading{display:flex;align-items:center;justify-content:space-between;gap:8px}.field-heading label{font-size:12px;font-weight:650}.small-button{border:1px solid #d9e4d7;background:#fff;border-radius:6px;color:#6f7b68;min-height:27px;padding:3px 7px;font-size:10px}.small-button[aria-pressed=true]{background:#ebf4e9;color:var(--green);border-color:#b8d5bc}.hint-range{display:flex;align-items:center;gap:10px;margin:14px 0 10px}.hint-range input{flex:1}.hint-range output{width:30px;text-align:right;font-size:10px;color:#748267;font-variant-numeric:tabular-nums}.hint-box p{font-size:10px;color:#839078;line-height:1.7}.mini-tip{display:flex;gap:9px;align-items:center;margin:20px 0 1px;color:#93a088}.mini-tip .icon{width:20px;height:20px}.mini-tip p{font-size:11px;line-height:1.8;color:#809075}.visibility-options{margin-bottom:18px}.visibility-options label{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 0;font-size:12px;color:#566d5e;border-bottom:1px solid #edf1e9}.visibility-options label span{display:flex;align-items:center;gap:9px}input[type=checkbox]{width:17px;height:17px;accent-color:var(--green);cursor:pointer}.jump-heading{display:flex;align-items:center;justify-content:space-between;margin:23px 0 8px;gap:8px}.jump-heading h3{font-size:12px;font-weight:650}.jump-heading span{font-size:10px;color:#829077}.checkpoint-list{display:flex;flex-direction:column;gap:2px}.checkpoint{display:flex;align-items:center;gap:9px;width:100%;border:0;background:none;min-height:30px;padding:4px 6px;border-radius:6px;text-align:left;color:#75816e;font-size:11px}.checkpoint-index{display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:#f0f4ed;color:#7d8a70;font-size:9px;font-variant-numeric:tabular-nums;flex:none}.checkpoint.active{background:#eef6e9;color:#286d4e}.checkpoint.active .checkpoint-index{background:#cfe6ce;color:#27653f}.checkpoint .checkpoint-progress{margin-left:auto;font-size:9px;color:#98a089}.fine-print{font-size:10px;color:#829079;line-height:1.85;margin-top:12px}.memo-card{padding:18px 18px 12px}.memo-course{font-size:10px;color:#7d906f;background:#f0f5e9;border-radius:4px;padding:2px 6px}textarea{display:block;width:100%;max-width:100%;min-height:100px;background:#fcfdf9;border:1px solid #e1e8d9;border-radius:8px;margin-top:12px;padding:11px 12px;resize:vertical;font-size:12px;line-height:1.8;color:#506543}textarea::placeholder{color:#a0ab94;font-size:11px}.memo-footer{display:flex;align-items:center;justify-content:space-between;gap:5px;margin-top:7px;font-size:9px;color:#8d9b7f}.privacy-note{display:flex;gap:9px;color:#a4b098;align-items:center;padding:0 12px 0 17px}.privacy-note .icon{width:17px;height:17px}.privacy-note p{font-size:10px;line-height:1.8;color:#839178}.data-summary{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:0 0 18px}.data-summary div{background:#f2f7ec;border-radius:9px;padding:12px 13px}.data-summary span{font-size:10px;display:block;color:#829471}.data-summary strong{font-size:23px;letter-spacing:-.03em;font-weight:600;color:#4c7036;line-height:1.6}.route-settings{margin-top:22px;border-top:1px solid #e8eee0;padding-top:14px}.route-settings summary{font-size:11px;font-weight:600;cursor:pointer;color:#6c7e5c}.route-settings p{font-size:10px;color:#899a76;line-height:1.9;margin:11px 0}.route-settings .secondary-button{font-size:10px;min-height:36px;padding:7px 6px}.text-button{border:0;background:none;color:#7c8c68;text-decoration:underline;text-underline-offset:3px;padding:6px 0;min-height:34px;font-size:10px}.reference-origin{font-size:10px;color:#90a17c;margin-top:10px}.source-footer{margin-top:26px;padding:21px 4px 0;border-top:1px solid #dce6d7;color:#849177}.source-head{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:8px}.source-label{font-size:11px;font-weight:650;color:#677d57}.source-date{font-size:10px;color:#95a385}.source-footer p{font-size:10px;line-height:1.95;max-width:1170px}.source-footer p strong{font-weight:600;color:#748764}.source-links{display:flex;flex-wrap:wrap;gap:9px 23px;margin-top:10px}.source-links a{font-size:10px;color:#6e8760;text-decoration:underline;text-underline-offset:3px}.toast{position:fixed;bottom:25px;left:50%;transform:translate(-50%,12px);padding:12px 20px;background:#1f4437;color:#f1f6ed;border-radius:11px;box-shadow:0 4px 20px #18332135;max-width:min(90vw,600px);font-size:12px;opacity:0;pointer-events:none;z-index:99;transition:opacity .2s,transform .2s}.toast.visible{opacity:1;transform:translate(-50%,0)}.help-dialog{width:min(570px,calc(100vw - 32px));border:1px solid #d2ddc5;border-radius:19px;padding:26px 29px 25px;background:#fff;color:var(--ink);box-shadow:0 20px 80px #16391e30;max-height:calc(100dvh - 45px);overflow:auto}.help-dialog::backdrop{background:#15382f75;backdrop-filter:blur(3px)}.dialog-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:22px}.dialog-heading h2{font-size:20px}.dialog-heading .icon-button{align-self:flex-start;font-size:24px}.help-step{display:flex;gap:13px;margin-bottom:19px}.help-step>span{display:grid;place-items:center;background:#e9f3e3;color:#578246;width:27px;height:27px;border-radius:8px;font-weight:700;font-size:12px;flex-shrink:0}.help-step h3{font-size:13px;margin-bottom:4px}.help-step p{font-size:12px;line-height:1.9;color:#738565}.help-shortcuts{padding:13px 15px;background:#f4f7ee;border-radius:9px;margin-top:24px}.help-shortcuts strong{font-size:11px}.help-shortcuts p{font-size:10px;line-height:1.9;color:#7f936b;margin-top:4px}.help-dialog .primary-button{margin-top:22px}.noscript{position:fixed;inset:0;background:#fff;padding:40px;font-size:18px;color:#153d36;z-index:100}.sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}[hidden]{display:none!important}#mapCard:fullscreen{border-radius:0;border:0;height:100dvh;display:flex;flex-direction:column;overflow:hidden;background:#fff}#mapCard:fullscreen .map-heading{padding:12px 20px 8px}#mapCard:fullscreen .map-notice{margin-bottom:6px}#mapCard:fullscreen .canvas-toolbar{padding-bottom:7px}#mapCard:fullscreen .map-stage{flex:1;min-height:0;aspect-ratio:auto}#mapCard:fullscreen .map-caption{padding:6px 20px}#mapCard:fullscreen .player{padding-top:9px;padding-bottom:9px}#mapCard:fullscreen .player-top{margin-bottom:7px}#mapCard:fullscreen .player-foot{margin-top:5px}
+@media(min-width:1600px){main,.topbar-inner{max-width:1560px}.app-layout{grid-template-columns:minmax(0,1fr) 350px;gap:24px}.mode-panel{padding:24px 19px 18px}}
+@media(max-width:1180px){main{padding:23px 24px 26px}.topbar-inner{padding:20px 24px}.app-layout{grid-template-columns:minmax(0,1fr) 294px;gap:17px}.header-actions{gap:10px}.unofficial{display:none}h1{font-size:22px}h1 span{font-size:13px}.map-heading{padding:17px 18px 14px}.map-heading p{font-size:10px}.map-notice{margin-left:15px;margin-right:15px}.map-stage{margin:0 10px}.canvas-toolbar{padding-left:15px;padding-right:15px}.player{padding-left:15px;padding-right:15px}.player-foot{display:block}.playback-note{display:block;margin-top:2px}.mode-panel{padding:20px 12px 12px}.memo-card{padding:16px 16px 12px}.privacy-note{padding-left:12px}}
+@media(max-width:960px){.app-layout{grid-template-columns:minmax(0,1fr)}.sidebar{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start;gap:16px}.control-card{grid-row:span 2}.privacy-note{align-self:start}.topbar-inner{padding-top:19px;padding-bottom:19px}.header-actions{gap:14px}h1 span{display:block;margin-left:0;margin-top:2px;font-size:12px}.brand-mark{width:45px;height:45px}.course-toolbar{margin-bottom:19px}.player-foot{display:flex}.playback-note{margin:0}.map-heading p{font-size:11px}.map-stage{margin:0 14px}.mode-panel{padding:21px 15px 16px}.map-notice{font-size:11px}.map-caption{padding-top:12px;padding-bottom:12px}.map-heading{padding:20px}.canvas-toolbar{padding:0 20px 12px}}
+@media(max-width:600px){body{font-size:13px}.topbar-inner{padding:17px 16px;gap:10px;align-items:center}.brand{gap:10px}.brand-mark{width:39px;height:43px;border-radius:11px}.brand-mark .icon{width:24px;height:24px}.header-eyebrow{font-size:9px;letter-spacing:.05em;margin-bottom:3px}h1{font-size:18px}h1 span{font-size:11px;margin-top:1px}.header-actions{gap:0;flex-direction:column;align-items:flex-end}.header-help{font-size:10px;min-height:26px;line-height:1.5;padding:2px 4px}.official-link{padding:4px 7px;font-size:10px;min-height:30px;border-radius:6px;gap:4px}.official-link .icon{width:12px;height:12px}main{padding:17px 12px 22px}.course-toolbar{display:block;margin-bottom:15px}.course-chooser{gap:12px;justify-content:space-between}.section-label{font-size:10px}.course-switch{gap:2px;padding:3px;border-radius:10px}.course-button{font-size:12px;min-height:39px;padding:7px 13px;gap:7px}.course-index{font-size:10px}.storage-status{justify-content:flex-end;margin-top:7px;font-size:9px;gap:5px}.status-dot{height:5px;width:5px}.app-layout{gap:15px}.map-card{border-radius:14px}.map-heading{padding:16px 14px 13px;gap:7px}.map-title-group{gap:9px}.map-number{width:35px;height:35px;font-size:15px;border-radius:10px}.map-heading h2{font-size:17px}.map-heading p{font-size:9px;letter-spacing:-.02em}.mode-badge{font-size:9px;padding:3px 7px}.map-notice{font-size:9px;margin:0 12px 11px;padding:6px 8px;gap:6px}.map-notice .icon{width:12px;height:12px}.canvas-toolbar{padding:0 12px 11px}.tool-button{font-size:11px;min-height:33px;padding:5px 10px;gap:5px}.tool-button .icon{width:14px;height:14px}.zoom-value{min-width:43px}.tool-divider{margin:0 3px}.icon-button{min-height:34px;min-width:30px}.map-stage{margin:0 7px;border-radius:7px}.map-caption{padding:10px 12px;font-size:9px}.legend{gap:12px}.legend-line{width:14px}.player{padding:12px 12px 11px}.player-top{gap:8px;margin-bottom:12px}.player-source,.speed-control{gap:6px}.player-source label,.speed-control label{font-size:10px}select{font-size:11px;min-height:32px;padding:5px 18px 5px 7px}.play-button{min-height:39px;min-width:74px;font-size:11px;gap:4px}.play-button .icon{width:14px;height:14px}.player-main{gap:6px}#progressText{font-size:10px;min-width:30px}.rewind{min-width:29px}.player-foot{display:block;font-size:9px;margin-top:9px}.playback-note{display:block;margin-top:2px;font-size:9px}.sidebar{grid-template-columns:1fr;gap:13px}.control-card{grid-row:auto;border-radius:14px}.mode-tabs{grid-template-columns:1fr 1fr 1fr}.mode-tab{font-size:12px;min-height:39px}.mode-panel{padding:21px 16px 16px}.panel-kicker{font-size:10px}.mode-panel h2{font-size:19px}.panel-description{font-size:12px;line-height:1.9}.secondary-button,.primary-button{min-height:44px}.small-button{min-height:32px}.hint-box p{font-size:11px}.mini-tip p{font-size:11px}.visibility-options label{min-height:44px}.checkpoint{min-height:36px;font-size:12px}.checkpoint-index{width:22px;height:22px;font-size:10px}.memo-card{border-radius:14px;padding:19px 19px 13px}textarea{font-size:16px;min-height:111px;line-height:1.7}textarea::placeholder{font-size:12px}.memo-footer{font-size:9px}.privacy-note{padding-left:17px}.source-footer{margin-top:21px;padding-top:18px}.source-head{align-items:flex-start;gap:10px}.source-label{font-size:10px}.source-date{font-size:8px}.source-footer p{font-size:9px}.source-links{gap:9px 17px}.source-links a{font-size:9px}.help-dialog{padding:21px 20px}.dialog-heading h2{font-size:17px}.help-step p{font-size:11px}.toast{font-size:11px;padding:11px 15px;bottom:17px}.fine-print{font-size:10px}.route-settings summary{font-size:12px}.route-settings p{font-size:11px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+@media print{.topbar{background:#fff;color:#000}.header-actions,.course-toolbar,.canvas-toolbar,.map-notice,.player,.sidebar,.toast,.source-links,.mode-badge{display:none!important}.topbar-inner{padding:0 0 15px}.brand-mark{display:none}.header-eyebrow,h1 span{color:#555}.app-layout{display:block}main{padding:0}.map-card{border:0;box-shadow:none}.map-stage{break-inside:avoid}.source-footer{margin-top:10px}.source-footer p{font-size:9px}.source-date{color:#555}}
+/* v1.0.1: editing is available in every view, including full screen. */
+.map-edit-toolbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:0 20px 12px}
+.map-edit-toolbar .secondary-button{min-height:38px;padding:7px 11px}
+.map-edit-note{margin-left:auto;color:var(--muted);font-size:11px}
+.map-edit-note.can-restore{color:var(--green);font-weight:600}
+#mapCard:fullscreen .map-edit-toolbar{padding-bottom:8px}
+@media(max-width:600px){.map-edit-toolbar{padding:0 14px 10px;gap:7px}.map-edit-toolbar .secondary-button{min-height:44px;flex:1}.map-edit-note{flex-basis:100%;margin:0;font-size:10px}}
+@media print{.map-edit-toolbar{display:none!important}}
+</style>
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" class="svg-symbols" aria-hidden="true"><defs>
+<symbol id="i-pen" viewBox="0 0 24 24"><path d="m15 4 5 5M4 20l5-1L20 8a2 2 0 0 0-5-5L4 14z"/></symbol>
+<symbol id="i-hand" viewBox="0 0 24 24"><path d="M8 13V6a2 2 0 0 1 4 0v6-8a2 2 0 0 1 4 0v8-6a2 2 0 0 1 4 0v9c0 5-3 7-7 7-3 0-5-2-7-5l-3-4a2 2 0 0 1 3-2l2 2z"/></symbol>
+<symbol id="i-play" viewBox="0 0 24 24"><path d="m8 5 12 7-12 7z"/></symbol>
+<symbol id="i-pause" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14"/></symbol>
+<symbol id="i-undo" viewBox="0 0 24 24"><path d="m8 4-5 5 5 5M3 9h10a7 7 0 0 1 0 14" transform="translate(0 -2)"/></symbol>
+<symbol id="i-reset" viewBox="0 0 24 24"><path d="M4 10a8 8 0 1 1 1 7M4 4v6h6"/></symbol>
+<symbol id="i-trash" viewBox="0 0 24 24"><path d="M3 6h18M9 6V3h6v3M5 6l1 15h12l1-15M10 10v7M14 10v7"/></symbol>
+<symbol id="i-down" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M4 15v6h16v-6"/></symbol>
+<symbol id="i-up" viewBox="0 0 24 24"><path d="M12 16V4m-5 5 5-5 5 5M4 15v6h16v-6"/></symbol>
+<symbol id="i-link" viewBox="0 0 24 24"><path d="M14 3h7v7M21 3 10 14M10 4H4v16h16v-6"/></symbol>
+<symbol id="i-full" viewBox="0 0 24 24"><path d="M8 3H3v5M16 3h5v5M3 16v5h5M21 16v5h-5"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L20 5"/></symbol>
+<symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6"/></symbol>
+<symbol id="i-car" viewBox="0 0 24 24"><path d="m4 10 2-6h12l2 6M3 10h18v9H3zM6 19v2M18 19v2M6 14h2M16 14h2"/></symbol>
+<symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 10v7M12 6v1"/></symbol>
+</defs></svg>
+<header class="topbar">
+ <div class="topbar-inner">
+  <div class="brand"><div class="brand-mark"><svg class="icon"><use href="#i-car"/></svg></div><div><div class="eyebrow header-eyebrow">神奈川県 · 普通第一種</div><h1>普通車 AT限定解除 <span>コース暗記</span></h1></div></div>
+  <div class="header-actions"><span class="unofficial">非公式・学習用</span><button id="helpButton" class="header-help" type="button">使い方</button><a class="official-link" href="https://www.police.pref.kanagawa.jp/assets/entry/pdf/83120_39.pdf" target="_blank" rel="noopener noreferrer">公式コース図<svg class="icon"><use href="#i-link"/></svg></a></div>
+ </div>
+</header>
+<main>
+ <section class="course-toolbar" aria-label="コース選択">
+  <div class="course-chooser"><span class="section-label">練習するコース</span><div class="course-switch"><button type="button" data-course="1" class="course-button active" aria-pressed="true"><span class="course-index">01</span>1号コース</button><button type="button" data-course="2" class="course-button" aria-pressed="false"><span class="course-index">02</span>2号コース</button></div></div>
+  <div class="storage-status"><span id="saveDot" class="status-dot"></span><span id="saveState" role="status" aria-live="polite">このブラウザに自動保存</span></div>
+ </section>
+ <div class="app-layout">
+  <section class="map-card" id="mapCard" aria-label="コース図と再生">
+   <div class="map-heading"><div class="map-title-group"><span id="mapNumber" class="map-number">01</span><div><h2 id="mapTitle">1号コース</h2><p id="mapSubtitle">覚えている走行ラインを、地図になぞる。</p></div></div><span class="mode-badge" id="modeBadge">練習モード</span></div>
+   <div class="map-notice"><svg class="icon"><use href="#i-info"/></svg><span><strong>模式図・参考ルート</strong>です。正確な形状・経路は公式PDFで確認してください。</span></div>
+   <div class="canvas-toolbar">
+    <div class="tool-switch" role="group" aria-label="地図の操作"><button type="button" id="drawTool" class="tool-button active" aria-pressed="true" title="地図に線を描く"><svg class="icon"><use href="#i-pen"/></svg>描く</button><button type="button" id="panTool" class="tool-button" aria-pressed="false" title="拡大した地図を移動する"><svg class="icon"><use href="#i-hand"/></svg>移動</button></div>
+    <div class="zoom-tools"><button type="button" id="zoomOut" class="icon-button zoom-button" aria-label="地図を縮小">−</button><button type="button" id="fitMap" class="zoom-value" title="全体表示に戻す"><span id="zoomValue">100%</span></button><button type="button" id="zoomIn" class="icon-button zoom-button" aria-label="地図を拡大">＋</button><span class="tool-divider"></span><button type="button" id="fullscreen" class="icon-button" aria-label="地図を全画面表示" title="全画面表示"><svg class="icon"><use href="#i-full"/></svg></button></div>
+   </div>
+   <div class="map-edit-toolbar" role="group" aria-label="練習線の編集">
+    <button type="button" id="mapUndoButton" class="secondary-button" disabled><svg class="icon" aria-hidden="true"><use href="#i-undo"/></svg><span id="mapUndoLabel">1本戻す</span></button>
+    <button type="button" id="mapClearButton" class="secondary-button" disabled><svg class="icon" aria-hidden="true"><use href="#i-trash"/></svg>線をすべて消す</button>
+    <span class="map-edit-note" id="mapEditNote" role="status" aria-live="polite">青い練習線だけ消去します。</span>
+   </div>
+   <div class="map-stage" id="mapStage">
+    <svg id="courseMap" xmlns="http://www.w3.org/2000/svg" viewBox="270 185 1100 780" role="img" aria-label="1号コースの暗記用模式図。描くモードでドラッグすると走行線を描けます。" aria-describedby="mapAccessibilityHelp" tabindex="0">
+     <title>AT限定解除 コース模式図</title>
+     <desc>県警公開図をもとに簡略化・再描画した学習用の地図です。走行ルートは公式図で確認してください。</desc>
+     <g id="baseMap">
+<rect x="260" y="175" width="1120" height="800" fill="#edf2ef"/>
+<path d="M429 199 H586 Q674 199 805 221 L943 257 L1148 306 L1262 316 Q1343 325 1343 402 V778 Q1343 822 1298 839 Q1280 848 1242 848 H1130 Q1115 848 1110 866 Q1099 907 1038 907 H603 Q540 907 490 870 V702 Q490 679 480 670 L327 550 Q295 526 295 486 V285 Q295 199 429 199 Z" fill="#ffffff" stroke="#71867e" stroke-width="2.2"/>
+<g fill="#e8eee9" stroke="#8b9d95" stroke-width="1.9" stroke-linejoin="round"><path d="M409 312 V262 Q408 244 389 248 Q358 250 358 281 V375 Q358 393 378 393 H411 V333 Q411 328 400 328 H376 V312 Z"/><path d="M444 247 Q458 247 458 261 V378 Q458 393 444 393 Q431 393 431 378 V261 Q431 247 444 247 Z"/><path d="M504 247 H598 Q615 247 615 257 Q615 264 600 270 L511 307 L592 342 Q614 352 614 367 V389 H585 L559 353 L550 345 L523 384 Q516 395 503 393 Q489 391 489 376 V262 Q489 247 504 247 Z"/><path d="M680 254 L755 265 Q774 265 771 277 Q770 285 756 285 H706 V333 Q706 348 690 348 H677 Q664 348 664 335 V269 Q664 254 680 254 Z"/><path d="M738 300 H755 Q770 300 770 314 V392 H680 Q663 392 663 378 Q663 362 679 362 H725 V314 Q725 300 738 300 Z"/><path d="M837 278 L849 281 Q863 285 863 299 V574 Q863 589 848 589 H835 Q820 589 820 574 V293 Q820 278 837 278 Z"/><path d="M903 294 L945 303 Q961 306 961 320 Q961 337 947 335 L933 327 H903 Q889 327 889 313 V307 Q889 294 903 294 Z"/><path d="M903 372 H936 L947 365 Q961 364 961 378 Q961 392 948 392 H903 Q890 392 890 382 Q890 372 903 372 Z"/><path d="M929 431 H945 Q960 431 960 447 V524 Q960 537 946 537 H914 V448 Q914 431 929 431 Z"/><path d="M927 559 H947 Q961 559 961 574 Q961 589 947 589 H927 Q913 589 913 574 Q913 559 927 559 Z"/><path d="M374 431 Q387 431 387 446 V513 Q387 529 373 529 Q359 529 359 512 V448 Q359 431 374 431 Z"/><path d="M443 431 H458 V447 H444 V548 H458 V563 Q453 576 438 570 L427 566 V449 Q427 431 443 431 Z"/><path d="M508 431 H600 Q615 431 615 440 Q615 447 600 447 H528 V481 Q528 486 516 486 H489 V452 Q489 431 508 431 Z"/><path d="M543 457 H576 V463 H589 V456 H614 V477 H590 V472 H576 V486 H543 Z"/><path d="M503 514 H552 V526 H528 V542 H516 V533 H489 V527 Q489 514 503 514 Z"/><path d="M588 512 H614 V575 Q614 589 600 589 H503 Q489 589 489 581 Q489 573 503 573 H551 Q585 573 586 548 Q587 540 582 533 Q576 522 588 512 Z"/><path d="M679 431 H756 Q772 431 772 442 Q772 452 756 452 H695 C735 458 751 485 730 510 C710 534 719 552 750 553 H770 V573 Q770 588 755 588 H716 C673 588 654 558 665 528 C674 505 701 503 703 488 C705 478 695 470 680 470 H665 V445 Q665 431 679 431 Z"/><path d="M543 627 H600 Q615 627 615 643 V652 H601 V767 H614 V785 Q614 798 599 798 Q552 799 552 768 V756 H575 V647 H539 Q527 646 524 639 Q530 627 543 627 Z"/><path d="M679 627 H756 Q772 627 772 637 Q772 647 756 647 H679 Q664 647 664 637 Q664 627 679 627 Z"/><path d="M680 662 H703 V685 H728 V662 H757 Q771 662 771 677 V690 Q771 704 757 704 H706 V738 Q706 752 691 752 H678 Q664 752 664 738 V677 Q664 662 680 662 Z"/><path d="M741 719 H758 Q771 719 771 734 V783 Q771 798 757 798 H680 Q664 798 664 783 Q664 766 680 766 H727 V734 Q727 719 741 719 Z"/><path d="M839 627 H948 Q962 627 962 637 Q962 644 947 650 L861 684 L947 718 Q962 724 962 742 H902 V726 H850 L833 743 Q819 744 821 731 L835 715 V637 H820 Q822 627 839 627 Z"/><path d="M836 770 H880 V778 H946 Q961 778 961 791 Q961 798 948 798 H836 Q820 798 820 784 Q820 770 836 770 Z"/><path d="M1029 326 H1043 V363 H1031 V371 H1045 V389 H1025 Q1012 389 1012 377 V341 Q1012 326 1029 326 Z"/><path d="M1077 337 Q1091 337 1091 350 V359 H1079 V382 H1091 Q1091 393 1077 393 Q1064 393 1064 380 V351 Q1064 337 1077 337 Z"/><path d="M1110 349 Q1122 349 1135 363 V389 H1110 Z"/><path d="M1199 359 H1245 Q1267 359 1279 378 Q1286 393 1271 393 H1199 Q1183 393 1183 378 V373 Q1183 359 1199 359 Z"/><path d="M1028 431 H1119 Q1136 431 1136 447 V463 Q1136 478 1121 478 H1100 Q1084 478 1084 447 H1064 V464 Q1064 478 1048 478 H1027 Q1011 478 1011 463 V447 Q1011 431 1028 431 Z"/><path d="M1027 497 H1120 Q1136 497 1136 512 Q1136 527 1120 527 H1027 Q1011 527 1011 512 Q1011 497 1027 497 Z"/><path d="M1028 541 H1048 Q1064 541 1064 557 V572 H1084 V557 Q1084 541 1100 541 H1120 Q1136 541 1136 557 V574 Q1136 589 1120 589 H1027 Q1011 589 1011 574 V557 Q1011 541 1028 541 Z"/><path d="M1199 431 H1265 Q1281 431 1281 439 Q1281 447 1265 447 H1229 V482 H1183 V447 Q1183 431 1199 431 Z"/><path d="M1240 461 H1280 V482 H1266 Q1240 487 1240 504 Q1240 515 1247 524 Q1260 544 1240 547 H1198 V509 H1217 V474 H1240 Z"/><path d="M1266 498 Q1280 498 1280 514 V574 Q1280 589 1266 589 H1198 Q1182 589 1182 574 Q1182 558 1198 558 H1243 Q1278 554 1272 529 Q1269 520 1263 514 Q1259 506 1266 498 Z"/><path d="M1198 627 H1266 Q1280 627 1280 643 V668 H1183 V653 H1239 V646 H1217 V635 H1183 Q1186 627 1198 627 Z"/><path d="M1198 681 H1217 V689 H1266 Q1280 689 1280 704 V728 Q1280 744 1266 744 H1183 V735 H1241 V717 H1221 V700 H1201 V714 H1183 V696 Q1183 681 1198 681 Z"/><path d="M1199 759 H1266 Q1280 759 1280 777 Q1280 797 1266 797 H1199 Q1183 797 1183 778 Q1183 759 1199 759 Z"/><path d="M1030 627 H1120 Q1135 627 1135 638 Q1135 648 1119 648 H1061 Q1030 648 1030 672 Q1030 685 1040 699 Q1052 719 1038 729 Q1020 739 1014 729 V648 Q1014 627 1030 627 Z"/><path d="M1064 659 H1120 Q1135 659 1135 675 V700 Q1135 718 1120 718 H1097 V750 H1081 V770 H1036 Q1012 770 1012 756 Q1012 745 1028 745 Q1063 742 1065 717 Q1066 702 1052 686 Q1037 662 1064 659 Z"/><path d="M1112 730 H1136 V783 Q1136 798 1121 798 H1027 Q1012 798 1012 789 Q1012 779 1027 779 H1097 V745 Q1097 730 1112 730 Z"/></g>
+<g fill="#fff" stroke="#8b9d95" stroke-width="1.9"><path d="M555 303 L585 290 Q601 285 612 295 V321 Q607 335 593 328 L555 313 Z"/><path d="M550 367 L561 383 Q565 392 555 392 H544 Q535 392 540 383 Z"/><path d="M891 684 L938 668 Q955 664 961 674 V692 Q961 708 945 703 Z"/></g>
+<g fill="none" stroke="#788b83" stroke-width="2.1" stroke-linejoin="round"><path d="M489 834 H540 Q565 850 590 850 H734 Q750 850 750 846 Q750 842 734 842 H591"/><path d="M592 875 H732 Q744 875 744 879 Q744 882 732 882 H592 Q588 882 588 879 Q588 875 592 875 Z"/><path d="M753 907 Q777 885 791 847 H800 Q816 889 839 907"/><path d="M857 844 H1045 Q1058 844 1058 848 Q1058 852 1045 852 H857 Q846 852 846 848 Q846 844 857 844 Z"/><path d="M871 875 H1019 Q1025 875 1025 879 Q1025 882 1019 882 H871 Q863 882 863 879 Q863 875 871 875 Z"/></g>
+<g stroke="#52655d" stroke-width="3"><path d="M388 484 H427 M388 492 H427 M864 506 H913 M864 514 H913 M888 346 H936 M888 353 H936"/><path d="M941 344 V356 M948 344 V356" stroke-width="1.5"/></g>
+<g class="road-number" fill="#ffffff" stroke="#8b6d4a" stroke-width="1.6"><g transform="translate(324 417)"><circle r="14.5"/><text y="0.8">1</text></g><g transform="translate(464 226)"><circle r="14.5"/><text y="0.8">2</text></g><g transform="translate(462 425)"><circle r="14.5"/><text y="0.8">3</text></g><g transform="translate(470 593)"><circle r="14.5"/><text y="0.8">4</text></g><g transform="translate(526 608)"><circle r="14.5"/><text y="0.8">5</text></g><g transform="translate(639 821)"><circle r="14.5"/><text y="0.8">6</text></g><g transform="translate(637 608)"><circle r="14.5"/><text y="0.8">7</text></g><g transform="translate(632 423)"><circle r="14.5"/><text y="0.8">8</text></g><g transform="translate(637 224)"><circle r="14.5"/><text y="0.8">9</text></g><g transform="translate(801 261)"><circle r="14.5"/><text y="0.8">10</text></g><g transform="translate(797 608)"><circle r="14.5"/><text y="0.8">11</text></g><g transform="translate(797 821)"><circle r="14.5"/><text y="0.8">12</text></g><g transform="translate(997 826)"><circle r="14.5"/><text y="0.8">13</text></g><g transform="translate(980 612)"><circle r="14.5"/><text y="0.8">14</text></g><g transform="translate(984 415)"><circle r="14.5"/><text y="0.8">15</text></g><g transform="translate(988 296)"><circle r="14.5"/><text y="0.8">16</text></g><g transform="translate(1164 332)"><circle r="14.5"/><text y="0.8">17</text></g><g transform="translate(1164 412)"><circle r="14.5"/><text y="0.8">18</text></g><g transform="translate(1159 614)"><circle r="14.5"/><text y="0.8">19</text></g><g transform="translate(1164 814)"><circle r="14.5"/><text y="0.8">20</text></g><g transform="translate(1293 608)"><circle r="14.5"/><text y="0.8">21</text></g><g transform="translate(1310 417)"><circle r="14.5"/><text y="0.8">22</text></g></g>
+<g class="small-number" fill="#fbfcfb" stroke="#92a097" stroke-width="1.2"><g transform="translate(395 263)"><circle r="10"/><text y=".6">32</text></g><g transform="translate(395 371)"><circle r="10"/><text y=".6">31</text></g><g transform="translate(374 445)"><circle r="10"/><text y=".6">30</text></g><g transform="translate(374 512)"><circle r="10"/><text y=".6">29</text></g><g transform="translate(437 552)"><circle r="10"/><text y=".6">28</text></g><g transform="translate(586 264)"><circle r="10"/><text y=".6">26</text></g><g transform="translate(586 356)"><circle r="10"/><text y=".6">25</text></g><g transform="translate(552 648)"><circle r="10"/><text y=".6">27</text></g><g transform="translate(589 780)"><circle r="10"/><text y=".6">24</text></g><g transform="translate(757 270)"><circle r="10"/><text y=".6">21</text></g><g transform="translate(754 532)"><circle r="10"/><text y=".6">20</text></g><g transform="translate(681 677)"><circle r="10"/><text y=".6">22</text></g><g transform="translate(759 677)"><circle r="10"/><text y=".6">19</text></g><g transform="translate(759 735)"><circle r="10"/><text y=".6">18</text></g><g transform="translate(680 781)"><circle r="10"/><text y=".6">23</text></g><g transform="translate(838 713)"><circle r="10"/><text y=".6">17</text></g><g transform="translate(934 638)"><circle r="10"/><text y=".6">11</text></g><g transform="translate(934 729)"><circle r="10"/><text y=".6">10</text></g><g transform="translate(949 785)"><circle r="10"/><text y=".6">9</text></g><g transform="translate(903 306)"><circle r="10"/><text y=".6">13</text></g><g transform="translate(903 385)"><circle r="10"/><text y=".6">14</text></g><g transform="translate(929 451)"><circle r="10"/><text y=".6">15</text></g><g transform="translate(963 544)"><circle r="10"/><text y=".6">12</text></g><g transform="translate(927 575)"><circle r="10"/><text y=".6">16</text></g><g transform="translate(1027 457)"><circle r="10"/><text y=".6">5</text></g><g transform="translate(1121 458)"><circle r="10"/><text y=".6">4</text></g><g transform="translate(1027 560)"><circle r="10"/><text y=".6">6</text></g><g transform="translate(1117 559)"><circle r="10"/><text y=".6">3</text></g><g transform="translate(1121 677)"><circle r="10"/><text y=".6">2</text></g><g transform="translate(1118 752)"><circle r="10"/><text y=".6">1</text></g><g transform="translate(1031 713)"><circle r="10"/><text y=".6">7</text></g><g transform="translate(1030 785)"><circle r="10"/><text y=".6">8</text></g></g>
+<g class="task-number" fill="#f5f8ff" stroke="#8392c8" stroke-width="1.3"><g transform="translate(504 548)"><circle r="11"/><text y=".6">1</text></g><g transform="translate(504 503)"><circle r="11"/><text y=".6">2</text></g><g transform="translate(501 470)"><circle r="11"/><text y=".6">3</text></g><g transform="translate(510 375)"><circle r="11"/><text y=".6">4</text></g><g transform="translate(600 382)"><circle r="11"/><text y=".6">5</text></g><g transform="translate(600 470)"><circle r="11"/><text y=".6">6</text></g><g transform="translate(1034 382)"><circle r="11"/><text y=".6">7</text></g><g transform="translate(1034 338)"><circle r="11"/><text y=".6">8</text></g><g transform="translate(1122 383)"><circle r="11"/><text y=".6">9</text></g><g transform="translate(1196 470)"><circle r="11"/><text y=".6">10</text></g><g transform="translate(1196 529)"><circle r="11"/><text y=".6">11</text></g><g transform="translate(1196 637)"><circle r="11"/><text y=".6">12</text></g><g transform="translate(1196 694)"><circle r="11"/><text y=".6">13</text></g><g transform="translate(1267 775)"><circle r="11"/><text y=".6">14</text></g><g transform="translate(1267 699)"><circle r="11"/><text y=".6">15</text></g><g transform="translate(1268 509)"><circle r="11"/><text y=".6">16</text></g><g transform="translate(1266 470)"><circle r="11"/><text y=".6">17</text></g></g>
+<g class="bay-number" fill="#fff" stroke="#92a097" stroke-width="1.2"><g transform="translate(739 904)"><circle r="7"/><text y=".4">5</text></g><g transform="translate(735 887)"><circle r="7"/><text y=".4">6</text></g><g transform="translate(735 869)"><circle r="7"/><text y=".4">7</text></g><g transform="translate(735 853)"><circle r="7"/><text y=".4">8</text></g><g transform="translate(1039 904)"><circle r="7"/><text y=".4">1</text></g><g transform="translate(1038 887)"><circle r="7"/><text y=".4">2</text></g><g transform="translate(1038 869)"><circle r="7"/><text y=".4">3</text></g><g transform="translate(1039 850)"><circle r="7"/><text y=".4">4</text></g></g>
+<g fill="#50635a" font-family="system-ui,sans-serif" font-size="17" font-weight="600" text-anchor="middle"><text x="723" y="941">発着場</text><text x="1019" y="941">発着場</text></g>
+</g>
+     <g id="referenceLayer"><path id="referencePath" class="reference-line"/><g id="directionArrows"></g></g>
+     <g id="userLines" class="user-lines"></g>
+     <path id="draftLine" class="user-line"/>
+     <g id="startPin"><circle r="9" fill="#ffffff" stroke="#087b66" stroke-width="3"/><circle r="3" fill="#087b66"/><rect x="-22" y="-37" width="44" height="23" rx="7" fill="#153d36"/><text y="-21" text-anchor="middle" fill="#ffffff" font-size="12" font-family="sans-serif">発着</text></g>
+     <g id="referenceCar" class="replay-car" style="display:none"><ellipse rx="16" ry="11" fill="#fff" fill-opacity=".9"/><rect x="-12" y="-7" width="24" height="14" rx="4" fill="#d45635" stroke="#ffffff" stroke-width="1.7"/><path d="M2-5h5v10H2z" fill="#ffddca"/><path d="M-7-5h5v10h-5z" fill="#9d3822"/><path d="M10-4v8" stroke="#ffeacb" stroke-width="1.5"/></g>
+     <g id="userCar" class="replay-car" style="display:none"><ellipse rx="16" ry="11" fill="#fff" fill-opacity=".9"/><rect x="-12" y="-7" width="24" height="14" rx="4" fill="#2563eb" stroke="#ffffff" stroke-width="1.7"/><path d="M2-5h5v10H2z" fill="#c2dcff"/><path d="M-7-5h5v10h-5z" fill="#194baf"/><path d="M10-4v8" stroke="#e7f2ff" stroke-width="1.5"/></g>
+    </svg>
+   </div>
+   <div class="map-caption"><div class="legend"><span><i class="legend-line mine"></i>自分の線</span><span><i class="legend-line reference"></i>参考ルート</span></div><span id="strokeCount">描いた線：0本</span></div>
+   <p id="mapAccessibilityHelp" class="sr-only">描くモードでマウスまたは指をドラッグしてください。移動モードでは地図を移動できます。拡大縮小はボタン、ホイール、または2本指で行えます。空白キーで再生・一時停止、ControlとZで線を1本戻します。</p>
+   <div class="player">
+    <div class="player-top"><div class="player-source"><label for="playSource">再生する線</label><select id="playSource"><option value="own">自分の線</option><option value="reference">参考ルート</option><option value="both">両方を比較</option></select></div><div class="speed-control"><label for="playSpeed">速度</label><select id="playSpeed"><option value="0.5">0.5×</option><option value="1" selected>1.0×</option><option value="2">2.0×</option><option value="4">4.0×</option></select></div></div>
+    <div class="player-main"><button id="playButton" class="play-button" type="button" aria-label="再生" disabled><svg class="icon"><use id="playIcon" href="#i-play"/></svg><span id="playLabel">再生</span></button><button id="rewind" class="icon-button rewind" type="button" title="最初に戻す" aria-label="最初に戻す"><svg class="icon"><use href="#i-reset"/></svg></button><input type="range" id="playProgress" min="0" max="1000" value="0" aria-label="再生位置"><output id="progressText" for="playProgress">0%</output></div>
+    <div class="player-foot"><span id="playerStatus" role="status">まず地図に走行ラインを描いてください。</span><span class="playback-note">後退・停止・実車の動きは再現しません。</span></div>
+   </div>
+  </section>
+  <aside class="sidebar">
+   <section class="control-card">
+    <nav class="mode-tabs" aria-label="操作モード"><button type="button" data-mode="practice" class="mode-tab active" aria-pressed="true">練習</button><button type="button" data-mode="answer" class="mode-tab" aria-pressed="false">答え合わせ</button><button type="button" data-mode="data" class="mode-tab" aria-pressed="false">保存・読込</button></nav>
+    <div id="practicePanel" class="mode-panel">
+     <div class="panel-kicker">線を隠して、思い出す</div><h2>走行ラインを描く</h2><p class="panel-description">発着点から、覚えている順番でなぞってください。マウス・指・ペンに対応しています。</p>
+     <div class="button-pair"><button type="button" id="undoButton" class="secondary-button" disabled><svg class="icon"><use href="#i-undo"/></svg><span id="undoLabel">1本戻す</span></button><button type="button" id="clearButton" class="secondary-button" disabled><svg class="icon"><use href="#i-trash"/></svg>全消去</button></div>
+     <div class="hint-box"><div class="field-heading"><label for="hintRange">参考ルートのヒント</label><button type="button" id="hintToggle" class="small-button" aria-pressed="false">表示する</button></div><div class="hint-range"><input id="hintRange" type="range" min="0" max="100" value="0" aria-label="参考ルートの濃さ"><output id="hintValue" for="hintRange">0%</output></div><p>薄く表示して、忘れたところだけ確認できます。</p></div>
+     <button type="button" id="goAnswer" class="primary-button full-width">答え合わせへ<svg class="icon"><use href="#i-arrow"/></svg></button>
+     <div class="mini-tip"><svg class="icon"><use href="#i-hand"/></svg><p>細かいところは拡大して練習。<br>「移動」で地図を動かせます。</p></div>
+    </div>
+    <div id="answerPanel" class="mode-panel" hidden>
+     <div class="panel-kicker">重ねて、順番を確かめる</div><h2>参考ルートと比較</h2><p class="panel-description">自分の線と参考ルートを重ねて確認します。正誤の自動採点は行いません。</p>
+     <div class="visibility-options"><label><span><i class="legend-line reference"></i>参考ルート</span><input id="showReference" type="checkbox" checked></label><label><span><i class="legend-line mine"></i>自分の線</span><input id="showOwn" type="checkbox" checked></label></div>
+     <button type="button" id="playReference" class="primary-button full-width"><svg class="icon"><use href="#i-play"/></svg>参考ルートを再生</button>
+     <div class="jump-heading"><h3>再生位置へジャンプ</h3><span>順路の目安</span></div><div id="checkpointList" class="checkpoint-list"></div><p class="fine-print">エリア名は暗記用の目安です。公式の課題名・走行指示ではありません。</p>
+    </div>
+    <div id="dataPanel" class="mode-panel" hidden>
+     <div class="panel-kicker">練習の記録を、手元に</div><h2>保存・読み込み</h2><p class="panel-description">2コース分の練習線・メモ・登録ルートを、JSONファイルにまとめます。</p>
+     <div class="data-summary"><div><span>1号コース</span><strong id="summary1">0本</strong></div><div><span>2号コース</span><strong id="summary2">0本</strong></div></div>
+     <button type="button" id="exportButton" class="primary-button full-width"><svg class="icon"><use href="#i-down"/></svg>記録を書き出す</button><button type="button" id="importButton" class="secondary-button full-width"><svg class="icon"><use href="#i-up"/></svg>記録を読み込む</button><input type="file" id="importFile" accept=".json,application/json" hidden>
+     <p class="fine-print">読み込み時は、現在の練習線・メモを置き換えます。必要な記録は先に書き出してください。</p>
+     <details class="route-settings"><summary>参考ルートを自分で登録する</summary><p>現在のコースの練習線を、参考ルートとして登録できます。複数の線は描いた順に再生し、線と線の間は瞬間移動します。</p><button type="button" id="registerReference" class="secondary-button full-width">練習線を参考ルートに登録</button><button type="button" id="restoreReference" class="text-button">初期の参考ルートに戻す</button></details>
+     <p id="referenceOrigin" class="reference-origin">参考ルート：初期データ</p>
+    </div>
+   </section>
+   <section class="memo-card"><div class="field-heading"><label for="courseMemo">このコースのメモ</label><span id="memoCourse" class="memo-course">1号</span></div><textarea id="courseMemo" rows="4" maxlength="2000" placeholder="覚えにくい分岐や、教習で確認したことをメモ…"></textarea><div class="memo-footer"><span>入力内容はこのブラウザ内に保存</span><span id="memoCount">0 / 2000</span></div></section>
+   <div class="privacy-note"><svg class="icon"><use href="#i-check"/></svg><p>登録不要・記録の外部送信なし。<br>HTMLファイルはオフラインでも動作します。</p></div>
+  </aside>
+ </div>
+ <footer class="source-footer">
+  <div class="source-head"><span class="source-label">出典とご利用について</span><span class="source-date">公式ページ確認：2026年9月25日</span></div>
+  <p>神奈川県警察「四輪車技能試験コース図」の「AT限定解除等コース・一種」をもとに、地図とルートを簡略化・再描画しています。<strong>県警が作成・監修したツールではありません。</strong>道路形状・走行位置・発着位置などに原図との差があります。当日の指定コースと試験官の指示を優先してください。</p>
+  <div class="source-links"><a href="https://www.police.pref.kanagawa.jp/tetsuzuki/menkyo/mes83120.html" target="_blank" rel="noopener noreferrer">県警のコース図一覧 ↗</a><a href="https://www.police.pref.kanagawa.jp/assets/entry/pdf/83120_39.pdf" target="_blank" rel="noopener noreferrer">出典PDF：AT限定解除（一種） ↗</a><a href="https://www.police.pref.kanagawa.jp/guidance.html" target="_blank" rel="noopener noreferrer">出典の利用規約 ↗</a></div>
+ </footer>
+</main>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<dialog id="helpDialog" class="help-dialog"><div class="dialog-heading"><div><div class="panel-kicker">はじめて使うときに</div><h2>3つの操作でコース練習</h2></div><button type="button" id="closeHelp" class="icon-button" aria-label="使い方を閉じる">×</button></div><div class="help-step"><span>1</span><div><h3>コースを選んで、描く</h3><p>1号・2号を選択し、練習モードで発着点から走行ラインを描きます。「1本戻す」で直前の線を取り消せます。</p></div></div><div class="help-step"><span>2</span><div><h3>重ねて確認し、再生する</h3><p>「答え合わせ」で参考ルートを表示します。「両方を比較」は、2つの線の進行率を合わせて再生します。所要時間や運転技能の比較ではありません。</p></div></div><div class="help-step"><span>3</span><div><h3>メモを残し、必要なら書き出す</h3><p>線とメモはこのブラウザ内に自動保存します。ブラウザのデータ削除で失われるため、大事な記録は「保存・読込」でJSONに書き出してください。</p></div></div><p class="fine-print">「線をすべて消す」は選択中のコースの青い練習線だけを消します。誤って消した場合は「消去を戻す」で戻せます。新しい線を描くかページを読み直すと、消去の取り消しはできなくなります。</p><div class="help-shortcuts"><strong>操作のヒント</strong><p>ホイール・2本指：拡大縮小 ／ 移動モード・Shift＋ドラッグ：地図の移動<br>Space：再生・一時停止 ／ Ctrl・⌘＋Z：1本戻す ／ 0：全体表示</p></div><p class="fine-print">本ツールは公式図を描き直した模式図であり、公式PDFの画像そのものではありません。参考ルートの再生は走行順の学習用で、後退・停止・速度・車線位置・MT操作を再現するものではありません。</p><button type="button" id="startPractice" class="primary-button full-width">練習を始める</button></dialog>
+<noscript><div class="noscript">このツールを使うには、ブラウザのJavaScriptを有効にしてください。</div></noscript>
+<script id="courseData" type="application/json">{"app":"kanagawa-at-course-tool","version":1,"viewBox":[270,185,1100,780],"checkedAt":"2026-09-25","sourcePage":"https://www.police.pref.kanagawa.jp/tetsuzuki/menkyo/mes83120.html","sourcePdf":"https://www.police.pref.kanagawa.jp/assets/entry/pdf/83120_39.pdf","courses":{"1":{"id":"1","name":"1号コース","path":[[711,896],[552,896],[516,876],[516,695],[504,666],[399,579],[399,485],[399,402],[624,405],[624,233],[481,233],[481,565],[554,565],[565,564],[573,559],[576,552],[575,544],[572,538],[569,532],[568,524],[570,515],[576,509],[588,503],[654,503],[654,215],[803,230],[1000,278],[1151,315],[1263,323],[1303,342],[1329,371],[1334,400],[1334,624],[1205,624],[1163,586],[1163,490],[1219,490],[1219,451],[1285,451],[1285,395],[1280,374],[1260,355],[1231,347],[1154,347],[1002,302],[1002,468],[1002,595],[1114,595],[1175,647],[1175,717],[1183,724],[1209,724],[1209,706],[1217,706],[1217,720],[1233,720],[1233,724],[1142,724],[1142,591],[1314,591],[1314,789],[1296,810],[1272,824],[1231,834],[1105,834],[1060,882],[1041,896],[711,896]],"checkpoints":[{"index":0,"label":"発着場"},{"index":6,"label":"左側エリア"},{"index":10,"label":"左上の折り返し"},{"index":19,"label":"左側のS字"},{"index":25,"label":"上側外周"},{"index":37,"label":"右側のクランク"},{"index":45,"label":"中央右の通路"},{"index":52,"label":"右下の課題"},{"index":67,"label":"発着場へ"}]},"2":{"id":"2","name":"2号コース","path":[[625,891],[560,891],[513,867],[513,799],[790,799],[973,799],[973,306],[761,254],[625,241],[480,241],[480,490],[534,490],[534,450],[654,450],[654,623],[511,623],[482,640],[398,587],[398,485],[398,400],[621,400],[621,208],[805,231],[1000,282],[1159,320],[1263,324],[1304,344],[1324,371],[1334,410],[1334,619],[1140,619],[1140,550],[1242,550],[1253,546],[1259,539],[1260,532],[1258,524],[1254,517],[1250,512],[1248,505],[1251,499],[1257,495],[1268,490],[1289,487],[1289,383],[1285,369],[1270,357],[1253,351],[1181,347],[1181,717],[1187,722],[1208,722],[1208,706],[1216,706],[1216,720],[1233,720],[1233,724],[1179,724],[1179,807],[1113,807],[1094,866],[1055,892],[625,891]],"checkpoints":[{"index":0,"label":"発着場"},{"index":4,"label":"下側の通路"},{"index":9,"label":"左上へ"},{"index":12,"label":"左側のクランク"},{"index":18,"label":"左側エリア"},{"index":22,"label":"上側外周"},{"index":36,"label":"右側のS字"},{"index":52,"label":"右下の課題"},{"index":62,"label":"発着場へ"}]}}}</script>
+<script>(() => {
+  'use strict';
+  const DATA = JSON.parse(document.getElementById('courseData').textContent);
+  const APP = 'kanagawa-at-course-tool';
+  const STORAGE_KEY = 'kanagawa.at-course.v1';
+  const SVG_NS = 'http://www.w3.org/2000/svg';
+  const BOUNDS = {x:270, y:185, w:1100, h:780};
+  const MAX_POINTS = 16000;
+  const MAX_STROKES = 250;
+  const $ = id => document.getElementById(id);
+  const clone = value => JSON.parse(JSON.stringify(value));
+  const clamp = (n, lo, hi) => Math.max(lo, Math.min(hi, n));
+  const distance = (a, b) => Math.hypot(a[0]-b[0], a[1]-b[1]);
+  const blankCourse = () => ({strokes:[], memo:'', customReference:null});
+  const defaultSaved = () => ({app:APP, version:1, courses:{'1':blankCourse(), '2':blankCourse()}, settings:{course:'1', speed:1}});
+  let saved = defaultSaved();
+  // Transient per-course clear recovery. Deliberately not written to storage.
+  const clearedStrokes = {'1':null, '2':null};
+  let storageAvailable = true;
+  let loadingWarning = '';
+  let toastTimer = 0;
+  let saveTimer = 0;
+
+  // Validate the complete document before changing any saved data.
+  function validateStrokes(value, label, allowEmpty = true) {
+    if (!Array.isArray(value) || value.length > MAX_STROKES || (!allowEmpty && !value.length)) {
+      throw new Error(label + 'の線データが不正です。');
+    }
+    let count = 0;
+    return value.map(stroke => {
+      if (!Array.isArray(stroke) || stroke.length < 2) throw new Error(label + 'は各線に2点以上必要です。');
+      count += stroke.length;
+      if (count > MAX_POINTS) throw new Error(label + 'の点数が多すぎます。');
+      return stroke.map(point => {
+        if (!Array.isArray(point) || point.length !== 2 || !point.every(Number.isFinite)) {
+          throw new Error(label + 'の座標が不正です。');
+        }
+        const [x,y] = point;
+        if (x < BOUNDS.x || x > BOUNDS.x+BOUNDS.w || y < BOUNDS.y || y > BOUNDS.y+BOUNDS.h) {
+          throw new Error(label + 'に地図の範囲外の座標があります。');
+        }
+        return [Math.round(x*100)/100, Math.round(y*100)/100];
+      });
+    });
+  }
+  function validateDocument(value) {
+    if (!value || value.app !== APP || value.version !== 1 || !value.courses) {
+      throw new Error('このツール用の記録JSONではありません。');
+    }
+    const result = defaultSaved();
+    for (const id of ['1','2']) {
+      const source = value.courses[id];
+      if (!source || typeof source.memo !== 'string' || source.memo.length > 2000) {
+        throw new Error(id + '号コースのメモが不正です。');
+      }
+      result.courses[id] = {
+        strokes: validateStrokes(source.strokes, id+'号コース'),
+        memo: source.memo,
+        customReference: source.customReference == null ? null : validateStrokes(source.customReference, id+'号の参考ルート', false)
+      };
+    }
+    if (value.settings && ['1','2'].includes(value.settings.course)) result.settings.course = value.settings.course;
+    if (value.settings && [0.5,1,2,4].includes(value.settings.speed)) result.settings.speed = value.settings.speed;
+    return result;
+  }
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) saved = validateDocument(JSON.parse(raw));
+  } catch (error) {
+    loadingWarning = '保存内容を読み込めませんでした。必要に応じて記録JSONを読み込んでください。';
+    if (error.name === 'SecurityError') {
+      storageAvailable = false;
+      loadingWarning = 'この環境ではブラウザ保存を利用できません。記録はJSONで書き出してください。';
+    }
+  }
+
+  const state = {
+    course:saved.settings.course, mode:'practice', tool:'draw', hint:0,
+    showReference:true, showOwn:true, source:'own', speed:saved.settings.speed,
+    progress:0, playing:false, view:{...BOUNDS}, zoom:1,
+    draft:null, gesture:false, pinch:null, pan:null, activePointer:null,
+    refTrack:null, ownTrack:null, checkpoints:[], raf:0, lastTime:0
+  };
+  const pointers = new Map();
+  const map = $('courseMap');
+  const course = () => saved.courses[state.course];
+  const defaultCourse = () => DATA.courses[state.course];
+  const referenceStrokes = () => course().customReference || [defaultCourse().path];
+
+  function toast(text) {
+    $('toast').textContent = text;
+    $('toast').classList.add('visible');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => $('toast').classList.remove('visible'), 4000);
+  }
+  function setSaveStatus(text, warning = false) {
+    $('saveState').textContent = text;
+    $('saveDot').classList.toggle('warning', warning);
+  }
+  function saveNow() {
+    clearTimeout(saveTimer);
+    saved.settings = {course:state.course, speed:state.speed};
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(saved));
+      storageAvailable = true;
+      setSaveStatus('このブラウザに保存済み');
+    } catch (error) {
+      const firstFailure = storageAvailable;
+      storageAvailable = false;
+      setSaveStatus('自動保存できません・JSONで書き出してください', true);
+      if (firstFailure) toast('ブラウザに保存できませんでした。記録は「保存・読込」から書き出してください。');
+    }
+  }
+  function scheduleSave() {
+    if (storageAvailable) setSaveStatus('保存中…');
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(saveNow, 350);
+  }
+
+  // Each stroke remains independent: no artificial line is drawn across gaps.
+  function buildTrack(strokes) {
+    const segments = [];
+    let total = 0;
+    for (let si=0; si<strokes.length; si++) {
+      const stroke = strokes[si];
+      for (let i=1; i<stroke.length; i++) {
+        const a=stroke[i-1], b=stroke[i], len=distance(a,b);
+        if (len < 0.001) continue;
+        segments.push({a,b,len,from:total,to:total+len,angle:Math.atan2(b[1]-a[1],b[0]-a[0])*180/Math.PI,strokeIndex:si});
+        total += len;
+      }
+    }
+    return {segments,total};
+  }
+  function pointAt(track, progress) {
+    if (!track || !track.segments.length) return null;
+    const target = clamp(progress,0,1)*track.total;
+    let lo=0, hi=track.segments.length-1;
+    while (lo<hi) {
+      const mid=(lo+hi)>>1;
+      if (track.segments[mid].to < target) lo=mid+1; else hi=mid;
+    }
+    const s=track.segments[lo];
+    const t=clamp((target-s.from)/s.len,0,1);
+    return {x:s.a[0]+(s.b[0]-s.a[0])*t,y:s.a[1]+(s.b[1]-s.a[1])*t,angle:s.angle};
+  }
+  function strokePath(stroke) {
+    return stroke.map((p,i) => (i?'L':'M')+p[0].toFixed(2)+' '+p[1].toFixed(2)).join(' ');
+  }
+  function allPaths(strokes) { return strokes.map(strokePath).join(' '); }
+  function svgElement(name, attributes={}) {
+    const el=document.createElementNS(SVG_NS,name);
+    for (const [key,value] of Object.entries(attributes)) el.setAttribute(key,String(value));
+    return el;
+  }
+  function rebuildTracks() {
+    state.refTrack=buildTrack(referenceStrokes());
+    state.ownTrack=buildTrack(course().strokes);
+    $('referencePath').setAttribute('d',allPaths(referenceStrokes()));
+    $('userLines').replaceChildren(...course().strokes.map(stroke => svgElement('path',{d:strokePath(stroke),class:'user-line'})));
+    $('directionArrows').replaceChildren();
+    for (let d=120; d<state.refTrack.total-40; d+=290) {
+      const p=pointAt(state.refTrack,d/state.refTrack.total);
+      if (p) $('directionArrows').append(svgElement('path',{d:'M-7 -4 L0 0 L-7 4',transform:`translate(${p.x} ${p.y}) rotate(${p.angle})`}));
+    }
+    const first=referenceStrokes()[0][0];
+    $('startPin').setAttribute('transform',`translate(${first[0]} ${first[1]})`);
+    if (course().customReference) {
+      state.checkpoints=[0,.25,.5,.75,1].map((fraction,i)=>({fraction,label:['開始位置','25%の位置','50%の位置','75%の位置','終了位置'][i]}));
+    } else {
+      const cumulative=[0];
+      for (let i=1;i<defaultCourse().path.length;i++) cumulative.push(cumulative[i-1]+distance(defaultCourse().path[i-1],defaultCourse().path[i]));
+      const length=cumulative[cumulative.length-1] || 1;
+      state.checkpoints=defaultCourse().checkpoints.map(cp=>({fraction:cumulative[cp.index]/length,label:cp.label}));
+    }
+    renderCheckpoints();
+    updateCounts();
+    updateVisibility();
+    updatePlayer();
+  }
+  function renderCheckpoints() {
+    $('checkpointList').replaceChildren();
+    for (let i=0;i<state.checkpoints.length;i++) {
+      const cp=state.checkpoints[i];
+      const btn=document.createElement('button');
+      btn.type='button'; btn.className='checkpoint';
+      btn.dataset.fraction=String(cp.fraction);
+      btn.setAttribute('aria-label',cp.label+'から参考ルートを確認');
+      const no=document.createElement('span'); no.className='checkpoint-index'; no.textContent=String(i+1).padStart(2,'0');
+      const label=document.createElement('span'); label.textContent=cp.label;
+      const progress=document.createElement('span'); progress.className='checkpoint-progress'; progress.textContent=Math.round(cp.fraction*100)+'%';
+      btn.append(no,label,progress);
+      btn.addEventListener('click',()=>{
+        pause(); state.source='reference'; state.progress=cp.fraction;
+        $('playSource').value=state.source; updatePlayer();
+      });
+      $('checkpointList').append(btn);
+    }
+  }
+  function updateCounts() {
+    const count=course().strokes.length;
+    $('strokeCount').textContent='描いた線：'+count+'本';
+    const canRestore=!count && !!clearedStrokes[state.course];
+    const undoLabel=canRestore?'\u6d88\u53bb\u3092\u623b\u3059':'1\u672c\u623b\u3059';
+    for (const id of ['undoButton','mapUndoButton']) $(id).disabled=!count&&!canRestore;
+    for (const id of ['undoLabel','mapUndoLabel']) $(id).textContent=undoLabel;
+    for (const id of ['clearButton','mapClearButton']) $(id).disabled=!count;
+    $('mapEditNote').textContent=canRestore
+      ?'\u6d88\u53bb\u3057\u307e\u3057\u305f\u3002\u300c\u6d88\u53bb\u3092\u623b\u3059\u300d\u3067\u53d6\u308a\u6d88\u305b\u307e\u3059\u3002'
+      :'\u9752\u3044\u7df4\u7fd2\u7dda\u3060\u3051\u6d88\u53bb\u3057\u307e\u3059\u3002';
+    $('mapEditNote').classList.toggle('can-restore',canRestore);
+    $('summary1').textContent=saved.courses['1'].strokes.length+'本';
+    $('summary2').textContent=saved.courses['2'].strokes.length+'本';
+    $('registerReference').disabled=!count;
+    $('restoreReference').disabled=course().customReference===null;
+    $('referenceOrigin').textContent='参考ルート：'+(course().customReference?'自分で登録したデータ':'初期データ（公式図から再構成）');
+  }
+  function updateVisibility() {
+    const opacity=state.mode==='practice'?state.hint/100:(state.showReference?1:0);
+    $('referenceLayer').style.opacity=String(opacity);
+    $('userLines').style.display=state.mode==='practice'||state.showOwn?'':'none';
+    $('hintRange').value=String(state.hint);
+    $('hintValue').textContent=state.hint+'%';
+    $('hintToggle').textContent=state.hint>0?'隠す':'表示する';
+    $('hintToggle').setAttribute('aria-pressed',String(state.hint>0));
+    $('showReference').checked=state.showReference;
+    $('showOwn').checked=state.showOwn;
+  }
+  function updateModeUI() {
+    document.querySelectorAll('[data-mode]').forEach(button=>{
+      const active=button.dataset.mode===state.mode;
+      button.classList.toggle('active',active);
+      button.setAttribute('aria-pressed',String(active));
+    });
+    $('practicePanel').hidden=state.mode!=='practice';
+    $('answerPanel').hidden=state.mode!=='answer';
+    $('dataPanel').hidden=state.mode!=='data';
+    $('modeBadge').textContent={practice:'練習モード',answer:'答え合わせ',data:'保存・読込'}[state.mode];
+    $('mapSubtitle').textContent={practice:'覚えている走行ラインを、地図になぞる。',answer:'自分の線を重ねて、走行順を確かめる。',data:'描いた線とメモを、ファイルで持ち出す。'}[state.mode];
+  }
+  function setMode(mode) {
+    if (!['practice','answer','data'].includes(mode)) return;
+    cancelPointerGesture(); pause(); state.mode=mode; state.progress=0;
+    if (mode==='practice') {state.hint=0;state.source='own';state.showOwn=true;setTool('draw');}
+    if (mode==='answer') {state.source='reference';state.showReference=true;state.showOwn=true;setTool('pan');}
+    if (mode==='data') setTool('pan');
+    $('playSource').value=state.source;
+    updateModeUI(); updateVisibility(); updatePlayer();
+  }
+  function selectCourse(id) {
+    if (!['1','2'].includes(id)||state.course===id) return;
+    cancelPointerGesture(); pause(); state.course=id;state.progress=0;state.hint=0;
+    fitMap(); renderCourse(); saveNow();
+  }
+  function renderCourse() {
+    document.querySelectorAll('[data-course]').forEach(button=>{
+      const active=button.dataset.course===state.course;
+      button.classList.toggle('active',active);button.setAttribute('aria-pressed',String(active));
+    });
+    $('mapTitle').textContent=defaultCourse().name;
+    $('mapNumber').textContent=state.course.padStart(2,'0');
+    $('memoCourse').textContent=state.course+'号';
+    map.setAttribute('aria-label',defaultCourse().name+'の暗記用模式図。描くモードでドラッグすると走行線を描けます。');
+    $('courseMemo').value=course().memo;
+    $('memoCount').textContent=course().memo.length+' / 2000';
+    $('playSource').value=state.source;$('playSpeed').value=String(state.speed);
+    updateModeUI();rebuildTracks();
+  }
+
+  function canPlay() {
+    if (state.source==='reference') return state.refTrack && state.refTrack.total>0;
+    if (state.source==='own') return state.ownTrack && state.ownTrack.total>0;
+    return state.refTrack && state.refTrack.total>0 && state.ownTrack && state.ownTrack.total>0;
+  }
+  function selectedTrack() {return state.source==='own'?state.ownTrack:state.refTrack;}
+  function updateCar(id, track, visible) {
+    const car=$(id);
+    const p=visible?pointAt(track,state.progress):null;
+    car.style.display=p?'':'none';
+    if (p) car.setAttribute('transform',`translate(${p.x} ${p.y}) rotate(${p.angle})`);
+  }
+  function updatePlayer() {
+    const playable=Boolean(canPlay());
+    $('playButton').disabled=!playable;
+    $('playProgress').disabled=!playable;
+    $('rewind').disabled=!playable;
+    $('playLabel').textContent=state.playing?'一時停止':'再生';
+    $('playButton').setAttribute('aria-label',state.playing?'一時停止':'再生');
+    $('playIcon').setAttribute('href',state.playing?'#i-pause':'#i-play');
+    $('playProgress').value=String(Math.round(state.progress*1000));
+    $('playProgress').setAttribute('aria-valuetext',Math.round(state.progress*100)+'%');
+    $('progressText').textContent=Math.round(state.progress*100)+'%';
+    const show=state.progress>0||state.playing;
+    updateCar('referenceCar',state.refTrack,show&&state.source!=='own');
+    updateCar('userCar',state.ownTrack,show&&state.source!=='reference');
+    let current=0;
+    for (let i=0;i<state.checkpoints.length;i++) if (state.progress+0.0001>=state.checkpoints[i].fraction) current=i;
+    document.querySelectorAll('.checkpoint').forEach((el,i)=>{
+      const active=i===current&&state.source!=='own';
+      el.classList.toggle('active',active);el.setAttribute('aria-current',active?'step':'false');
+    });
+    let label;
+    if (!playable) label=state.source==='both'?'比較するには、自分の線を描いてください。':'まず地図に走行ラインを描いてください。';
+    else if (state.source==='both') label='進行率を合わせて比較'+(state.playing?'・再生中':'');
+    else if (state.source==='reference') label=(state.checkpoints[current]?.label||'参考ルート')+(state.playing?'・再生中':state.progress>=1?'・再生終了':'');
+    else label=state.playing?'自分の線を再生中':state.progress>=1?'自分の線・再生終了':'自分の線・'+(state.progress>0?'一時停止中':'再生できます');
+    if ($('playerStatus').textContent!==label) $('playerStatus').textContent=label;
+  }
+  function pause() {
+    state.playing=false; cancelAnimationFrame(state.raf); state.raf=0; state.lastTime=0;
+    updatePlayer();
+  }
+  function tick(time) {
+    if (!state.playing) return;
+    const dt=state.lastTime?Math.min((time-state.lastTime)/1000,0.1):0;
+    state.lastTime=time;
+    const track=selectedTrack();
+    state.progress=clamp(state.progress+dt*110*state.speed/Math.max(track.total,1),0,1);
+    if (state.progress>=1) {state.playing=false;state.lastTime=0;}
+    updatePlayer();
+    if (state.playing) state.raf=requestAnimationFrame(tick);
+  }
+  function togglePlayback() {
+    if (!canPlay()) {toast('まず練習モードで走行ラインを描いてください。');return;}
+    if (state.playing) {pause();return;}
+    cancelPointerGesture();
+    if (state.progress>=1) state.progress=0;
+    state.playing=true;state.lastTime=0;updatePlayer();state.raf=requestAnimationFrame(tick);
+  }
+  function changeSource(source) {
+    pause();state.progress=0;
+    if (state.mode==='practice'&&source!=='own') setMode('answer');
+    state.source=source;$('playSource').value=source;updatePlayer();
+  }
+
+  function setTool(tool) {
+    state.tool=tool;
+    $('drawTool').classList.toggle('active',tool==='draw');$('drawTool').setAttribute('aria-pressed',String(tool==='draw'));
+    $('panTool').classList.toggle('active',tool==='pan');$('panTool').setAttribute('aria-pressed',String(tool==='pan'));
+    map.classList.toggle('pan-mode',tool==='pan');
+  }
+  function updateView() {
+    const v=state.view;
+    v.x=clamp(v.x,BOUNDS.x+40-v.w,BOUNDS.x+BOUNDS.w-40);
+    v.y=clamp(v.y,BOUNDS.y+40-v.h,BOUNDS.y+BOUNDS.h-40);
+    map.setAttribute('viewBox',`${v.x} ${v.y} ${v.w} ${v.h}`);
+    $('zoomValue').textContent=Math.round(state.zoom*100)+'%';
+    $('zoomOut').disabled=state.zoom<=0.75001;
+    $('zoomIn').disabled=state.zoom>=4.99999;
+  }
+  function fitMap() {state.zoom=1;state.view={...BOUNDS};updateView();}
+  function screenPoint(clientX,clientY) {
+    const matrix=map.getScreenCTM();
+    if (!matrix) return null;
+    const p=new DOMPoint(clientX,clientY).matrixTransform(matrix.inverse());
+    return [p.x,p.y];
+  }
+  function zoomTo(nextZoom,anchor=null) {
+    const v=state.view;
+    const a=anchor||[v.x+v.w/2,v.y+v.h/2];
+    const rx=(a[0]-v.x)/v.w,ry=(a[1]-v.y)/v.h;
+    state.zoom=clamp(nextZoom,.75,5);
+    const w=BOUNDS.w/state.zoom,h=BOUNDS.h/state.zoom;
+    state.view={x:a[0]-rx*w,y:a[1]-ry*h,w,h};updateView();
+  }
+  function withinBounds(p) {return p&&p[0]>=BOUNDS.x&&p[0]<=BOUNDS.x+BOUNDS.w&&p[1]>=BOUNDS.y&&p[1]<=BOUNDS.y+BOUNDS.h;}
+  function boundedPoint(p) {return [clamp(p[0],BOUNDS.x,BOUNDS.x+BOUNDS.w),clamp(p[1],BOUNDS.y,BOUNDS.y+BOUNDS.h)];}
+  function drawDraft() {$('draftLine').setAttribute('d',state.draft?strokePath(state.draft):'');}
+  function cancelPointerGesture() {
+    const capturedIds=[...pointers.keys()];
+    // Reset before releasing capture: a capture-loss event must not revive a draft.
+    pointers.clear();state.draft=null;state.pan=null;state.pinch=null;state.gesture=false;state.activePointer=null;
+    map.classList.remove('dragging');drawDraft();
+    for (const id of capturedIds) {try {if(map.hasPointerCapture(id)) map.releasePointerCapture(id);} catch (_) {}}
+  }
+  function startPinch() {
+    state.draft=null;state.pan=null;state.gesture=true;drawDraft();
+    const pts=[...pointers.values()].slice(0,2);
+    const middle=[(pts[0].x+pts[1].x)/2,(pts[0].y+pts[1].y)/2];
+    const anchor=screenPoint(...middle);
+    if (!anchor) return;
+    state.pinch={distance:Math.max(5,Math.hypot(pts[0].x-pts[1].x,pts[0].y-pts[1].y)),zoom:state.zoom,view:{...state.view},anchor,middle,rect:map.getBoundingClientRect()};
+  }
+  map.addEventListener('pointerdown',event=>{
+    if (event.pointerType==='mouse'&&event.button!==0&&event.button!==1) return;
+    event.preventDefault();
+    pointers.set(event.pointerId,{x:event.clientX,y:event.clientY});
+    try {map.setPointerCapture(event.pointerId);} catch (_) {}
+    if (pointers.size===2) {startPinch();return;}
+    if (pointers.size>2||state.gesture) return;
+    const p=screenPoint(event.clientX,event.clientY);
+    if (!p) return;
+    state.activePointer=event.pointerId;
+    if (state.tool==='pan'||event.shiftKey||event.button===1) {
+      const matrix=map.getScreenCTM();
+      state.pan={clientX:event.clientX,clientY:event.clientY,view:{...state.view},scale:matrix.a};map.classList.add('dragging');return;
+    }
+    if (!withinBounds(p)) return;
+    if (course().strokes.length>=MAX_STROKES) {toast('線が多すぎます。不要な線を消してから描いてください。');return;}
+    if (course().strokes.reduce((n,s)=>n+s.length,0)>=MAX_POINTS-2) {toast('線の点数が上限です。不要な線を消してください。');return;}
+    if (state.mode!=='practice') {
+      // Drawing is permitted on a visible reference as a manual tracing aid.
+      state.showOwn=true;updateVisibility();
+    }
+    pause();state.progress=0;state.draft=[boundedPoint(p)];drawDraft();updatePlayer();
+  });
+  map.addEventListener('pointermove',event=>{
+    if (!pointers.has(event.pointerId)) return;
+    event.preventDefault();pointers.set(event.pointerId,{x:event.clientX,y:event.clientY});
+    if (pointers.size>=2&&state.pinch) {
+      const pts=[...pointers.values()].slice(0,2), pin=state.pinch;
+      const dist=Math.max(5,Math.hypot(pts[0].x-pts[1].x,pts[0].y-pts[1].y));
+      const mid=[(pts[0].x+pts[1].x)/2,(pts[0].y+pts[1].y)/2];
+      state.zoom=clamp(pin.zoom*dist/pin.distance,.75,5);
+      const w=BOUNDS.w/state.zoom,h=BOUNDS.h/state.zoom;
+      const v=pin.view;
+      const rx=(pin.anchor[0]-v.x)/v.w,ry=(pin.anchor[1]-v.y)/v.h;
+      const scale=Math.min(pin.rect.width/w,pin.rect.height/h);
+      state.view={x:pin.anchor[0]-rx*w-(mid[0]-pin.middle[0])/scale,y:pin.anchor[1]-ry*h-(mid[1]-pin.middle[1])/scale,w,h};updateView();return;
+    }
+    if (state.gesture||event.pointerId!==state.activePointer) return;
+    if (state.pan) {
+      const p=state.pan;state.view={...p.view,x:p.view.x-(event.clientX-p.clientX)/p.scale,y:p.view.y-(event.clientY-p.clientY)/p.scale};updateView();return;
+    }
+    if (!state.draft) return;
+    const p=screenPoint(event.clientX,event.clientY);if (!p) return;
+    const point=boundedPoint(p);
+    const total=course().strokes.reduce((n,s)=>n+s.length,0)+state.draft.length;
+    if (total>=MAX_POINTS) return;
+    if (distance(point,state.draft[state.draft.length-1])>=1.5/state.zoom) {state.draft.push(point);drawDraft();}
+  });
+  function finishPointer(event,cancelled=false) {
+    if (!pointers.has(event.pointerId)) return;
+    const wasGesture=state.gesture;
+    pointers.delete(event.pointerId);
+    try {map.releasePointerCapture(event.pointerId);} catch (_) {}
+    if (event.pointerId===state.activePointer&&!wasGesture) {
+      if (!cancelled&&state.draft&&state.draft.length>1) {
+        const stroke=state.draft.map(([x,y])=>[Math.round(x*100)/100,Math.round(y*100)/100]);
+        if (buildTrack([stroke]).total>1) {clearedStrokes[state.course]=null;course().strokes.push(stroke);saveNow();}
+      }
+      state.draft=null;state.pan=null;state.activePointer=null;drawDraft();rebuildTracks();
+    }
+    if (!pointers.size) {state.gesture=false;state.pinch=null;state.pan=null;state.activePointer=null;state.draft=null;map.classList.remove('dragging');drawDraft();}
+  }
+  map.addEventListener('pointerup',event=>finishPointer(event));
+  map.addEventListener('pointercancel',event=>finishPointer(event,true));
+  map.addEventListener('lostpointercapture',event=>{if(pointers.has(event.pointerId)) finishPointer(event,true);});
+  map.addEventListener('contextmenu',event=>event.preventDefault());
+  map.addEventListener('wheel',event=>{
+    event.preventDefault();cancelPointerGesture();
+    zoomTo(state.zoom*Math.exp(clamp(-event.deltaY*.0015,-.3,.3)),screenPoint(event.clientX,event.clientY));
+  },{passive:false});
+
+  function undo() {
+    const restore=!course().strokes.length?clearedStrokes[state.course]:null;
+    if (!course().strokes.length&&!restore) return;
+    cancelPointerGesture();pause();state.progress=0;
+    if (restore) {
+      course().strokes=restore;
+      clearedStrokes[state.course]=null;
+      toast('\u6d88\u53bb\u3057\u305f\u7df4\u7fd2\u7dda\u3092\u623b\u3057\u307e\u3057\u305f\u3002');
+    } else {
+      course().strokes.pop();
+    }
+    rebuildTracks();saveNow();
+  }
+  function clearLines() {
+    // window.confirm() can be suppressed in embedded/sandboxed previews.
+    // Clear directly, then offer an in-page recovery action instead.
+    cancelPointerGesture();
+    if (!course().strokes.length) return;
+    pause();state.progress=0;
+    clearedStrokes[state.course]=clone(course().strokes);
+    course().strokes=[];
+    rebuildTracks();saveNow();
+    toast(defaultCourse().name+'\u306e\u7df4\u7fd2\u7dda\u3092\u6d88\u3057\u307e\u3057\u305f\u3002\u300c\u6d88\u53bb\u3092\u623b\u3059\u300d\u3067\u53d6\u308a\u6d88\u305b\u307e\u3059\u3002');
+  }
+  function exportRecord() {
+    saveNow();
+    const payload={...clone(saved),exportedAt:new Date().toISOString(),coordinates:{viewBox:DATA.viewBox},source:{url:DATA.sourcePdf,checkedAt:DATA.checkedAt,note:'公式図をもとに簡略化・再描画した模式図と参考ルート。'}};
+    const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json;charset=utf-8'});
+    const url=URL.createObjectURL(blob);
+    const anchor=document.createElement('a');anchor.href=url;anchor.download='kanagawa-at-record-'+new Date().toISOString().slice(0,10)+'.json';
+    document.body.append(anchor);anchor.click();anchor.remove();setTimeout(()=>URL.revokeObjectURL(url),10000);
+    toast('2コース分の記録を書き出しました。');
+  }
+  async function importRecord(file) {
+    if (!file) return;
+    if (file.size>3*1024*1024) {toast('ファイルが大きすぎます。3MB以下の記録JSONを選んでください。');return;}
+    try {
+      const value=JSON.parse(await file.text());
+      const validated=validateDocument(value);
+      if (!confirm('読み込んだファイルで、2コース分の練習線・メモ・登録ルートを置き換えます。よろしいですか？')) return;
+      cancelPointerGesture();pause();clearedStrokes['1']=null;clearedStrokes['2']=null;saved=validated;state.course=saved.settings.course;state.speed=saved.settings.speed;state.progress=0;
+      fitMap();renderCourse();saveNow();toast('記録を読み込みました。');
+    } catch (error) {
+      toast(error instanceof SyntaxError?'JSONファイルを読み取れません。内容を確認してください。':error.message||'読み込みに失敗しました。');
+    }
+  }
+
+  document.querySelectorAll('[data-course]').forEach(button=>button.addEventListener('click',()=>selectCourse(button.dataset.course)));
+  document.querySelectorAll('[data-mode]').forEach(button=>button.addEventListener('click',()=>setMode(button.dataset.mode)));
+  $('drawTool').addEventListener('click',()=>{cancelPointerGesture();setTool('draw');});
+  $('panTool').addEventListener('click',()=>{cancelPointerGesture();setTool('pan');});
+  $('zoomIn').addEventListener('click',()=>zoomTo(state.zoom*1.3));
+  $('zoomOut').addEventListener('click',()=>zoomTo(state.zoom/1.3));
+  $('fitMap').addEventListener('click',fitMap);
+  $('fullscreen').addEventListener('click',async()=>{
+    try {
+      if (document.fullscreenElement) await document.exitFullscreen();
+      else if ($('mapCard').requestFullscreen) await $('mapCard').requestFullscreen();
+      else toast('このブラウザは全画面表示に対応していません。');
+    } catch (_) {toast('全画面表示を開始できませんでした。');}
+  });
+  document.addEventListener('fullscreenchange',()=>{
+    $('fullscreen').setAttribute('aria-label',document.fullscreenElement?'全画面表示を終了':'地図を全画面表示');
+  });
+  $('undoButton').addEventListener('click',undo);
+  $('clearButton').addEventListener('click',clearLines);
+  $('mapUndoButton').addEventListener('click',undo);
+  $('mapClearButton').addEventListener('click',clearLines);
+  $('hintRange').addEventListener('input',event=>{state.hint=Number(event.target.value);updateVisibility();});
+  $('hintToggle').addEventListener('click',()=>{state.hint=state.hint>0?0:60;updateVisibility();});
+  $('goAnswer').addEventListener('click',()=>setMode('answer'));
+  $('showReference').addEventListener('change',event=>{state.showReference=event.target.checked;updateVisibility();});
+  $('showOwn').addEventListener('change',event=>{state.showOwn=event.target.checked;updateVisibility();});
+  $('playReference').addEventListener('click',()=>{pause();state.source='reference';state.progress=0;$('playSource').value='reference';togglePlayback();});
+  $('playSource').addEventListener('change',event=>changeSource(event.target.value));
+  $('playSpeed').addEventListener('change',event=>{state.speed=Number(event.target.value);saveNow();});
+  $('playButton').addEventListener('click',togglePlayback);
+  $('rewind').addEventListener('click',()=>{pause();state.progress=0;updatePlayer();});
+  $('playProgress').addEventListener('input',event=>{const progress=Number(event.target.value)/1000;pause();state.progress=progress;updatePlayer();});
+  $('courseMemo').addEventListener('input',event=>{course().memo=event.target.value.slice(0,2000);$('memoCount').textContent=course().memo.length+' / 2000';scheduleSave();});
+  $('exportButton').addEventListener('click',exportRecord);
+  $('importButton').addEventListener('click',()=>$('importFile').click());
+  $('importFile').addEventListener('change',async event=>{await importRecord(event.target.files?.[0]);event.target.value='';});
+  $('registerReference').addEventListener('click',()=>{
+    if (!course().strokes.length) {toast('先に練習モードで参考にしたい線を描いてください。');return;}
+    if (!confirm(defaultCourse().name+'の参考ルートを、現在の練習線で置き換えます。よろしいですか？')) return;
+    pause();state.progress=0;course().customReference=clone(course().strokes);rebuildTracks();saveNow();toast('このコースの参考ルートとして登録しました。');
+  });
+  $('restoreReference').addEventListener('click',()=>{
+    if (!course().customReference) return;
+    if (!confirm(defaultCourse().name+'の参考ルートを初期データに戻します。練習線・メモは残ります。よろしいですか？')) return;
+    pause();state.progress=0;course().customReference=null;rebuildTracks();saveNow();toast('初期の参考ルートに戻しました。');
+  });
+  function showHelp() {
+    pause();
+    if ($('helpDialog').showModal) $('helpDialog').showModal();
+    else alert('コースを選び、練習モードで地図に線を描きます。「答え合わせ」で参考ルートを確認し、「保存・読込」で記録をJSONに書き出せます。');
+  }
+  $('helpButton').addEventListener('click',showHelp);
+  $('closeHelp').addEventListener('click',()=>$('helpDialog').close());
+  $('startPractice').addEventListener('click',()=>{$('helpDialog').close();setMode('practice');});
+  $('helpDialog').addEventListener('click',event=>{
+    if(event.target!==$('helpDialog')) return;
+    const rect=$('helpDialog').getBoundingClientRect();
+    if(event.clientX<rect.left||event.clientX>rect.right||event.clientY<rect.top||event.clientY>rect.bottom) $('helpDialog').close();
+  });
+  document.addEventListener('keydown',event=>{
+    const el=event.target;
+    if ($('helpDialog').open || el instanceof HTMLElement && (el.matches('input,textarea,select')||el.isContentEditable)) return;
+    if ((event.ctrlKey||event.metaKey)&&!event.shiftKey&&event.key.toLowerCase()==='z') {event.preventDefault();undo();return;}
+    if (el instanceof HTMLElement && el.matches('button,a')) return;
+    if (event.code==='Space') {event.preventDefault();togglePlayback();}
+    else if(event.key==='0') fitMap();
+    else if(event.key==='+'||event.key==='=') zoomTo(state.zoom*1.3);
+    else if(event.key==='-') zoomTo(state.zoom/1.3);
+    else if(event.key==='Escape') {cancelPointerGesture();pause();}
+  });
+  window.addEventListener('pagehide',saveNow);
+  document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelPointerGesture();pause();saveNow();}});
+  window.addEventListener('blur',()=>{cancelPointerGesture();if(state.playing) pause();});
+
+  fitMap();renderCourse();
+  if (!storageAvailable) setSaveStatus('自動保存不可・JSONで記録を保存',true);
+  else if (loadingWarning) setSaveStatus('保存内容の読み込みを確認してください',true);
+  if (loadingWarning) setTimeout(()=>toast(loadingWarning),400);
+})();</script>
+</body>
+</html>
